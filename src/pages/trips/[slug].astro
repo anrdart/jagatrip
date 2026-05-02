@@ -320,7 +320,7 @@ const fmtIDRShort = (n: number) => {
 
     <!-- FAQ -->
     <section class="py-24 bg-white">
-      <div class="max-w-4xl mx-auto px-6">
+      <div class="max-w-3xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
             FAQ (FREQUENTLY ASKED QUESTIONS)
@@ -330,11 +330,37 @@ const fmtIDRShort = (n: number) => {
           </p>
         </div>
 
-        <div class="space-y-6">
-          {allFaqs.slice(0, 8).map((faq) => (
-            <div class="bg-jaga-bg p-8 rounded-[1.5rem] shadow-sm border border-gray-100">
-              <h3 class="text-xl font-bold text-gray-900 mb-3">Q: {faq.data.question}</h3>
-              <p class="text-gray-700 text-lg font-medium leading-relaxed">A: {faq.data.answer}</p>
+        <div class="divide-y divide-gray-200 border-y border-gray-200" id="trip-faq-accordion">
+          {allFaqs.slice(0, 8).map((faq, i) => (
+            <div class="trip-faq-item">
+              <button
+                class="trip-faq-trigger w-full flex items-center justify-between py-6 text-left gap-6"
+                aria-expanded={i === 0 ? 'true' : 'false'}
+                aria-controls={`trip-faq-answer-${i}`}
+                id={`trip-faq-trigger-${i}`}
+                type="button"
+              >
+                <span class="text-lg md:text-xl font-bold text-gray-900 leading-snug">
+                  {faq.data.question}
+                </span>
+                <span
+                  class={`trip-faq-icon shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-bold text-xl transition-all duration-300 ${
+                    i === 0 ? 'bg-jaga-orange text-white shadow-md' : 'bg-orange-100 text-jaga-orange'
+                  }`}
+                  aria-hidden="true"
+                >
+                  {i === 0 ? '×' : '+'}
+                </span>
+              </button>
+              <div
+                class="trip-faq-answer overflow-hidden transition-all duration-300"
+                id={`trip-faq-answer-${i}`}
+                role="region"
+                aria-labelledby={`trip-faq-trigger-${i}`}
+                style={i === 0 ? 'max-height: 400px; padding-bottom: 24px;' : 'max-height: 0;'}
+              >
+                <p class="text-gray-600 text-base md:text-lg leading-relaxed">{faq.data.answer}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -377,3 +403,37 @@ const fmtIDRShort = (n: number) => {
   <Footer />
   <FloatingWA />
 </BaseLayout>
+
+<script>
+  const tripItems = document.querySelectorAll<HTMLElement>('.trip-faq-item');
+  tripItems.forEach((item) => {
+    const btn    = item.querySelector<HTMLButtonElement>('.trip-faq-trigger')!;
+    const answer = item.querySelector<HTMLElement>('.trip-faq-answer')!;
+    const icon   = item.querySelector<HTMLElement>('.trip-faq-icon')!;
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      tripItems.forEach((other) => {
+        const ob = other.querySelector<HTMLButtonElement>('.trip-faq-trigger')!;
+        const oa = other.querySelector<HTMLElement>('.trip-faq-answer')!;
+        const oi = other.querySelector<HTMLElement>('.trip-faq-icon')!;
+        if (!ob) return;
+        ob.setAttribute('aria-expanded', 'false');
+        oa.style.maxHeight = '0';
+        oa.style.paddingBottom = '0';
+        oi.textContent = '+';
+        oi.classList.remove('bg-jaga-orange', 'text-white', 'shadow-md');
+        oi.classList.add('bg-orange-100', 'text-jaga-orange');
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.style.paddingBottom = '24px';
+        icon.textContent = '×';
+        icon.classList.remove('bg-orange-100', 'text-jaga-orange');
+        icon.classList.add('bg-jaga-orange', 'text-white', 'shadow-md');
+      }
+    });
+  });
+</script>

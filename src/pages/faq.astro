@@ -81,16 +81,42 @@ const extraSchemas = [
           ))}
         </div>
 
-        <!-- FAQ list -->
-        <div id="faq-list" class="space-y-6">
-          {allFaqs.map((faq) => (
+        <!-- FAQ list (accordion) -->
+        <div id="faq-list" class="divide-y divide-gray-200 border-y border-gray-200">
+          {allFaqs.map((faq, i) => (
             <div
-              class="bg-jaga-bg p-8 rounded-[1.5rem] shadow-sm border border-gray-100 transition-all"
+              class="page-faq-item"
               data-category={faq.data.category}
               id={faq.data.id}
             >
-              <h3 class="text-xl font-bold text-gray-900 mb-3">Q: {faq.data.question}</h3>
-              <p class="text-gray-700 text-lg font-medium leading-relaxed">A: {faq.data.answer}</p>
+              <button
+                class="page-faq-trigger w-full flex items-center justify-between py-6 text-left gap-6"
+                aria-expanded={i === 0 ? 'true' : 'false'}
+                aria-controls={`page-faq-answer-${i}`}
+                id={`page-faq-trigger-${i}`}
+                type="button"
+              >
+                <span class="text-lg md:text-xl font-bold text-gray-900 leading-snug">
+                  {faq.data.question}
+                </span>
+                <span
+                  class={`page-faq-icon shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-bold text-xl transition-all duration-300 ${
+                    i === 0 ? 'bg-jaga-orange text-white shadow-md' : 'bg-orange-100 text-jaga-orange'
+                  }`}
+                  aria-hidden="true"
+                >
+                  {i === 0 ? '×' : '+'}
+                </span>
+              </button>
+              <div
+                class="page-faq-answer overflow-hidden transition-all duration-300"
+                id={`page-faq-answer-${i}`}
+                role="region"
+                aria-labelledby={`page-faq-trigger-${i}`}
+                style={i === 0 ? 'max-height: 400px; padding-bottom: 24px;' : 'max-height: 0;'}
+              >
+                <p class="text-gray-600 text-base md:text-lg leading-relaxed">{faq.data.answer}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -119,8 +145,9 @@ const extraSchemas = [
 </BaseLayout>
 
 <script>
+  // ── Category filter ──
   const filterBtns = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
-  const faqItems   = document.querySelectorAll<HTMLElement>('[data-category]');
+  const faqItems   = document.querySelectorAll<HTMLElement>('.page-faq-item');
 
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -138,6 +165,40 @@ const extraSchemas = [
         const cat = item.dataset.category!;
         item.style.display = (filter === 'semua' || cat === filter) ? 'block' : 'none';
       });
+    });
+  });
+
+  // ── Accordion ──
+  faqItems.forEach((item) => {
+    const btn    = item.querySelector<HTMLButtonElement>('.page-faq-trigger')!;
+    const answer = item.querySelector<HTMLElement>('.page-faq-answer')!;
+    const icon   = item.querySelector<HTMLElement>('.page-faq-icon')!;
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      // Close all visible
+      faqItems.forEach((other) => {
+        if (other.style.display === 'none') return;
+        const ob = other.querySelector<HTMLButtonElement>('.page-faq-trigger')!;
+        const oa = other.querySelector<HTMLElement>('.page-faq-answer')!;
+        const oi = other.querySelector<HTMLElement>('.page-faq-icon')!;
+        if (!ob) return;
+        ob.setAttribute('aria-expanded', 'false');
+        oa.style.maxHeight = '0';
+        oa.style.paddingBottom = '0';
+        oi.textContent = '+';
+        oi.classList.remove('bg-jaga-orange', 'text-white', 'shadow-md');
+        oi.classList.add('bg-orange-100', 'text-jaga-orange');
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.style.paddingBottom = '24px';
+        icon.textContent = '×';
+        icon.classList.remove('bg-orange-100', 'text-jaga-orange');
+        icon.classList.add('bg-jaga-orange', 'text-white', 'shadow-md');
+      }
     });
   });
 </script>
