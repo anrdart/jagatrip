@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+
+const stats = await getCollection('stats');
+---
+
+<section
+  class="bg-stats glow-white-topleft"
+  style="
+    background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-dark) 100%);
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--section-py-stats, 80px);
+  "
+  aria-label="Statistik JAGATRIP"
+>
+  <div class="container">
+    <!-- Eyebrow -->
+    <p style="
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+      margin-bottom: 48px;
+    ">
+      TRACK RECORD
+    </p>
+
+    <!-- Stats row -->
+    <div class="stats-grid">
+      {stats.map((stat) => (
+        <div style="text-align: center;">
+          <div
+            class="stat-num"
+            data-counter
+            data-target={stat.data.target ?? 0}
+            data-suffix={stat.data.suffix ?? ''}
+            aria-label={`${stat.data.num} ${stat.data.label}`}
+          >
+            {stat.data.num}
+          </div>
+          <p class="stat-label">{stat.data.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initStatCounter } from '../../../lib/stat-counter';
+  document.addEventListener('DOMContentLoaded', initStatCounter);
+</script>
+
+<style>
+  .stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .stats-grid > div {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      gap: 32px;
+    }
+    .stats-grid > div {
+      min-width: 120px;
+      flex: 0 0 calc(50% - 20px);
+    }
+  }
+</style>

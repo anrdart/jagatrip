@@ -1,0 +1,116 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Konsultasi',
+    desc: 'Hubungi admin via WhatsApp, ceritakan kebutuhanmu',
+  },
+  {
+    num: '02',
+    title: 'Konfirmasi & DP',
+    desc: 'Bayar DP 50% untuk mengamankan seat-mu',
+  },
+  {
+    num: '03',
+    title: 'Pre-Trip Briefing',
+    desc: 'Terima detail program, checklist persiapan, dan informasi lengkap',
+  },
+  {
+    num: '04',
+    title: 'Perjalanan Berlangsung',
+    desc: 'Ikuti program penuh: sekolah, workshop, networking, city tour',
+  },
+  {
+    num: '05',
+    title: 'Pasca-Trip Network',
+    desc: 'Bergabung ke alumni community JAGATRIP dan terapkan insight',
+  },
+];
+---
+
+<section
+  class="section"
+  style="background: var(--color-ink);"
+  aria-labelledby="process-title"
+>
+  <div class="container">
+    <!-- Header -->
+    <div style="text-align: center; max-width: 720px; margin-inline: auto; margin-bottom: 64px;">
+      <span class="eyebrow" style="color: var(--color-orange);">CARA IKUT</span>
+      <h2 id="process-title" class="section-title" style="color: white;">
+        Dari Konsultasi hingga <span class="italic" style="color: var(--color-orange);">Pulang Bawa Insight,</span>
+      </h2>
+      <p style="
+        font-family: var(--font-body);
+        font-size: 17px;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.7);
+        margin-top: 16px;
+      ">
+        Proses mudah, transparan, dan didampingi dari awal sampai akhir.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="steps-grid">
+      {steps.map((step) => (
+        <div class="step-item reveal" style="text-align: center;">
+          <div class="process-num" aria-hidden="true">{step.num}</div>
+          <h3 style="
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+          ">
+            {step.title}
+          </h3>
+          <p style="
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.6);
+          ">
+            {step.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+
+  .step-item {
+    position: relative;
+  }
+
+  @media (max-width: 1024px) {
+    .steps-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .steps-grid .step-item:last-child {
+      grid-column: 1 / -1;
+      max-width: 300px;
+      margin-inline: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .steps-grid .step-item:last-child {
+      grid-column: auto;
+      max-width: none;
+    }
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+
+const partners = await getCollection('partners');
+---
+
+<div
+  style="
+    background: var(--color-white);
+    border-top: 1px solid var(--color-grey-light);
+    border-bottom: 1px solid var(--color-grey-light);
+    padding-block: 24px;
+  "
+  aria-label="Sekolah dan institusi mitra"
+>
+  <div class="container">
+    <p style="
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--color-grey);
+      text-align: center;
+      margin-bottom: 20px;
+    ">
+      DIPERCAYA OLEH PRAKTISI PENDIDIKAN TERBAIK
+    </p>
+
+    <div style="
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+    ">
+      {partners.map((partner) => (
+        <span class="logo-bar-item" style="font-family: var(--font-display);">
+          {partner.data.name}
+        </span>
+      ))}
+    </div>
+  </div>
+</div>

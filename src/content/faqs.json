@@ -1,0 +1,86 @@
+[
+  {
+    "id": "faq-1",
+    "category": "umum",
+    "order": 1,
+    "question": "Siapa yang boleh ikut program JAGATRIP Insider Series 2026?",
+    "answer": "Program ini terbuka untuk semua praktisi pendidikan: kepala sekolah, guru, pengawas pendidikan, tenaga kependidikan, pemilik yayasan, dan siapa saja yang bergerak di bidang pendidikan dan ingin berkembang."
+  },
+  {
+    "id": "faq-2",
+    "category": "persiapan",
+    "order": 2,
+    "question": "Apakah perlu paspor aktif?",
+    "answer": "Ya, peserta wajib memiliki paspor yang masih berlaku minimal 6 bulan setelah tanggal keberangkatan (minimal berlaku sampai Desember 2026). Jika belum punya paspor, segera urus sebelum mendaftar."
+  },
+  {
+    "id": "faq-3",
+    "category": "paket",
+    "order": 3,
+    "question": "Apa saja yang sudah termasuk dalam paket?",
+    "answer": "Paket sudah termasuk: tiket pesawat PP (untuk trip internasional), penginapan, makan sesuai program, welcome drink, transportasi selama program, workshop & seminar kit, merchandise, door prize, sertifikat resmi, dokumentasi profesional, city tour, tour leader berpengalaman, dan asuransi perjalanan."
+  },
+  {
+    "id": "faq-4",
+    "category": "paket",
+    "order": 4,
+    "question": "Apa yang TIDAK termasuk dalam paket?",
+    "answer": "Tidak termasuk: pengeluaran pribadi (oleh-oleh, belanja pribadi), visa (jika diperlukan), biaya bagasi tambahan, dan tips untuk pemandu lokal."
+  },
+  {
+    "id": "faq-5",
+    "category": "pendaftaran",
+    "order": 5,
+    "question": "Bagaimana cara mendaftar?",
+    "answer": "Hubungi admin JAGATRIP via WhatsApp di 085643972139. Tim kami akan memandu proses pendaftaran dan pembayaran DP untuk mengamankan kursimu."
+  },
+  {
+    "id": "faq-6",
+    "category": "pembayaran",
+    "order": 6,
+    "question": "Berapa DP yang harus dibayarkan untuk konfirmasi seat?",
+    "answer": "DP sebesar 50% dari harga paket. Pelunasan paling lambat H-7 sebelum keberangkatan."
+  },
+  {
+    "id": "faq-7",
+    "category": "pembayaran",
+    "order": 7,
+    "question": "Apakah harga bisa berubah?",
+    "answer": "Harga early bird berlaku sampai tanggal cutoff yang tercantum. Setelahnya berlaku harga normal. Segera daftar untuk mengunci harga terbaik."
+  },
+  {
+    "id": "faq-8",
+    "category": "pendaftaran",
+    "order": 8,
+    "question": "Berapa kuota peserta?",
+    "answer": "Kuota sangat terbatas untuk menjaga kualitas program dan pengalaman setiap peserta. Pendaftaran bersifat first-come, first-served."
+  },
+  {
+    "id": "faq-9",
+    "category": "pendaftaran",
+    "order": 9,
+    "question": "Apakah ada paket untuk grup/rombongan?",
+    "answer": "Ya! Ada keuntungan khusus untuk pendaftaran grup. Hubungi admin untuk informasi lebih lanjut tentang diskon rombongan."
+  },
+  {
+    "id": "faq-10",
+    "category": "persiapan",
+    "order": 10,
+    "question": "Apa yang harus dibawa selama perjalanan?",
+    "answer": "Paspor (untuk trip internasional), pakaian kasual dan formal (untuk sesi resmi sekolah), kamera/ponsel, dan semangat untuk belajar! Detail checklist akan dikirimkan setelah konfirmasi pendaftaran."
+  },
+  {
+    "id": "faq-11",
+    "category": "kebijakan",
+    "order": 11,
+    "question": "Bagaimana jika saya tidak bisa hadir setelah mendaftar?",
+    "answer": "Reschedule ke program berikutnya dimungkinkan dengan syarat tertentu. Pengembalian dana (refund) mengikuti kebijakan yang berlaku. Hubungi admin untuk detail."
+  },
+  {
+    "id": "faq-12",
+    "category": "umum",
+    "order": 12,
+    "question": "Apakah ada sertifikat resmi?",
+    "answer": "Ya! Setiap peserta akan mendapatkan sertifikat resmi dari PT JAGATRIP MITRA EDUKASI sebagai bukti partisipasi dalam program benchmarking pendidikan internasional."
+  }
+]

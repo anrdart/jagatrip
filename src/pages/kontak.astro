@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav       from '../components/layout/Nav.astro';
+import Footer    from '../components/layout/Footer.astro';
+import FloatingWA from '../components/layout/FloatingWA.astro';
+import { SITE, waLink } from '../data/site';
+import { breadcrumbSchema } from '../data/schemas/breadcrumb';
+
+const extraSchemas = [
+  breadcrumbSchema([{ name: 'Kontak', url: `${SITE.url}/kontak` }]),
+];
+
+const channels = [
+  {
+    icon:  '💬',
+    label: 'WhatsApp',
+    desc:  'Respon tercepat. Chat kami langsung untuk konsultasi program.',
+    value: SITE.waDisplay,
+    href:  waLink(),
+    cta:   'Chat Sekarang',
+    grad:  'var(--color-wa-green)',
+  },
+  {
+    icon:  '✉️',
+    label: 'Email',
+    desc:  'Untuk pertanyaan formal atau kerjasama institusi.',
+    value: SITE.email,
+    href:  `mailto:${SITE.email}`,
+    cta:   'Kirim Email',
+    grad:  'var(--color-orange)',
+  },
+  {
+    icon:  '📍',
+    label: 'Lokasi',
+    desc:  'Berbasis di Jakarta, melayani seluruh Indonesia.',
+    value: SITE.location,
+    href:  undefined,
+    cta:   undefined,
+    grad:  'var(--color-grey)',
+  },
+];
+---
+<BaseLayout
+  title="Kontak JAGATRIP — Hubungi Admin via WhatsApp"
+  description="Hubungi JAGATRIP via WhatsApp 085643972139 atau email alfatihahtourtravel@alfatihah.com. Konsultasi gratis program edu-tourism 2026."
+  extraSchemas={extraSchemas}
+>
+  <Nav />
+  <main id="main">
+
+    <!-- Hero -->
+    <section style="background:var(--color-ink); padding:80px 0; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:-50%; right:-10%; width:600px; height:600px; background:radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%); pointer-events:none;"></div>
+      <div class="container" style="text-align:center; position:relative; z-index:1;">
+        <span class="eyebrow" style="color:var(--color-orange);">HUBUNGI KAMI</span>
+        <h1 class="section-title" style="color:white; margin-top:8px; font-size:clamp(36px,6vw,64px); font-weight:900;">
+          Ada yang Ingin <span class="italic" style="color:var(--color-orange);">Ditanyakan?</span>
+        </h1>
+        <p style="font-size:17px; color:rgba(255,255,255,0.7); max-width:520px; margin:16px auto 0; line-height:1.7;">
+          Tim kami siap membantu. Pilih channel yang paling nyaman untukmu.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact channels -->
+    <section class="section" style="background:var(--color-white);">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px; max-width:900px; margin:0 auto;">
+          {channels.map((ch) => (
+            <div style="text-align:center; padding:40px 28px; background:var(--color-paper); border-radius:24px; border:1px solid var(--color-grey-light);">
+              <div style={`width:64px; height:64px; border-radius:20px; background:${ch.grad}; display:flex; align-items:center; justify-content:center; font-size:28px; margin:0 auto 20px;`} aria-hidden="true">
+                {ch.icon}
+              </div>
+              <h2 style="font-family:var(--font-display); font-size:20px; font-weight:800; color:var(--color-ink); margin-bottom:8px;">{ch.label}</h2>
+              <p style="font-size:14px; color:var(--color-grey); line-height:1.6; margin-bottom:16px;">{ch.desc}</p>
+              <p style="font-size:15px; font-weight:600; color:var(--color-ink); margin-bottom:20px; word-break:break-all;">{ch.value}</p>
+              {ch.href && ch.cta && (
+                <a
+                  href={ch.href}
+                  target={ch.href.startsWith('http') ? '_blank' : undefined}
+                  rel={ch.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  class="btn btn-primary btn-sm"
+                >
+                  {ch.cta}
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <!-- WhatsApp quick-link -->
+        <div style="text-align:center; margin-top:64px; max-width:600px; margin-left:auto; margin-right:auto;">
+          <div style="background:var(--color-ink); border-radius:24px; padding:48px 40px;">
+            <div style="font-size:48px; margin-bottom:16px;" aria-hidden="true">💬</div>
+            <h2 style="font-family:var(--font-display); font-size:28px; font-weight:800; color:white; margin-bottom:12px;">
+              Konsultasi Gratis via WhatsApp
+            </h2>
+            <p style="color:rgba(255,255,255,0.7); font-size:15px; line-height:1.7; margin-bottom:28px;">
+              Tanyakan apa saja — program mana yang cocok, harga, itinerary, atau cara daftar.
+              Tim kami akan merespons dalam 1×24 jam (biasanya jauh lebih cepat!).
+            </p>
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-lg">
+              <span aria-hidden="true">💬</span> Chat {SITE.waDisplay}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+  <FloatingWA />
+</BaseLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .container div[style*="grid-template-columns:repeat(3"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

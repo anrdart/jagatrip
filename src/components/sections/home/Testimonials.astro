@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+
+const testimonials = await getCollection('testimonials');
+---
+
+<section
+  class="section"
+  style="background: var(--color-paper);"
+  aria-labelledby="testimonials-title"
+>
+  <div class="container">
+    <!-- Header -->
+    <div style="text-align: center; max-width: 720px; margin-inline: auto; margin-bottom: 64px;">
+      <span class="eyebrow">TESTIMONI</span>
+      <h2 id="testimonials-title" class="section-title">
+        Apa Kata Mereka yang <span class="italic">Sudah Bergabung?</span>
+      </h2>
+    </div>
+
+    <!-- Cards -->
+    <div class="testi-grid">
+      {testimonials.map((testi) => (
+        <article class="testi-card reveal" aria-label={`Testimoni dari ${testi.data.name}`}>
+          <!-- Stars -->
+          <p
+            class="stars"
+            aria-label={`Rating ${testi.data.rating} dari 5 bintang`}
+            style="margin-bottom: 16px;"
+          >
+            {'★'.repeat(testi.data.rating ?? 5)}
+          </p>
+
+          <!-- Quote -->
+          <blockquote style="
+            font-family: var(--font-display);
+            font-size: 17px;
+            font-weight: 500;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--color-ink);
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+          ">
+            "{testi.data.quote}"
+          </blockquote>
+
+          <!-- Author -->
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <!-- Avatar -->
+            <div
+              style={`
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background: var(${testi.data.avatarGradient ?? '--color-grad-avatar-1'});
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--font-body);
+                font-weight: 700;
+                font-size: 16px;
+                color: white;
+                flex-shrink: 0;
+              `}
+              aria-hidden="true"
+            >
+              {testi.data.avatar}
+            </div>
+
+            <div>
+              <p style="
+                font-family: var(--font-body);
+                font-size: 15px;
+                font-weight: 700;
+                color: var(--color-ink);
+                margin-bottom: 2px;
+              ">
+                {testi.data.name}
+              </p>
+              <p style="
+                font-family: var(--font-body);
+                font-size: 13px;
+                color: var(--color-grey);
+              ">
+                {testi.data.role}
+              </p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 968px) {
+    .testi-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .testi-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

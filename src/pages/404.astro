@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav       from '../components/layout/Nav.astro';
+import Footer    from '../components/layout/Footer.astro';
+import FloatingWA from '../components/layout/FloatingWA.astro';
+import { waLink } from '../data/site';
+---
+<BaseLayout
+  title="404 — Halaman Tidak Ditemukan | JAGATRIP"
+  description="Halaman yang kamu cari tidak ada. Kembali ke beranda atau jelajahi program JAGATRIP Insider Series 2026."
+  noindex={true}
+>
+  <Nav />
+  <main id="main" style="min-height:70vh; display:flex; align-items:center; justify-content:center; background:var(--color-paper);">
+    <div class="container" style="text-align:center; padding-block:80px;">
+      <div style="font-size:96px; margin-bottom:8px; line-height:1;" aria-hidden="true">✈️</div>
+      <div style="font-family:var(--font-display); font-size:120px; font-weight:900; font-style:italic; color:var(--color-orange-light); line-height:1; margin-bottom:8px;">404</div>
+      <h1 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:800; color:var(--color-ink); margin-bottom:16px;">
+        Halaman Tidak Ditemukan
+      </h1>
+      <p style="font-size:17px; color:var(--color-grey); max-width:440px; margin:0 auto 36px; line-height:1.7;">
+        Sepertinya halaman ini sudah terbang ke destinasi lain. Mari kembali ke beranda atau jelajahi program JAGATRIP 2026.
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="/" class="btn btn-primary btn-lg">← Kembali ke Beranda</a>
+        <a href="/#agenda" class="btn btn-secondary btn-lg">Lihat Agenda 2026</a>
+        <a href={waLink()} target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+          <span aria-hidden="true">💬</span> WhatsApp
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+  <FloatingWA />
+</BaseLayout>

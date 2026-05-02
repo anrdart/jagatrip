@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import TripLayout from '../../layouts/TripLayout.astro';
+import Nav from '../../components/layout/Nav.astro';
+import Footer from '../../components/layout/Footer.astro';
+import FloatingWA from '../../components/layout/FloatingWA.astro';
+import TripHero from '../../components/sections/trip/TripHero.astro';
+import ProblemHook from '../../components/sections/trip/ProblemHook.astro';
+import WhatIsJagatrip from '../../components/sections/trip/WhatIsJagatrip.astro';
+import WhyJoin from '../../components/sections/trip/WhyJoin.astro';
+import BenefitsGrid from '../../components/sections/trip/BenefitsGrid.astro';
+import Itinerary from '../../components/sections/trip/Itinerary.astro';
+import PackageInclusion from '../../components/sections/trip/PackageInclusion.astro';
+import Pricing from '../../components/sections/trip/Pricing.astro';
+import Testimonials from '../../components/sections/trip/Testimonials.astro';
+import TripFaq from '../../components/sections/trip/TripFaq.astro';
+import TripCta from '../../components/sections/trip/TripCta.astro';
+import { formatDateRange } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const trips = await getCollection('trips');
+  return trips.map((trip) => ({
+    params: { slug: trip.data.slug },
+    props:  { trip },
+  }));
+}
+
+const { trip } = Astro.props;
+const { data } = trip;
+
+const allTestimonials = await getCollection('testimonials');
+const sharedFaqs      = await getCollection('faqs');
+
+const testimonials = allTestimonials
+  .filter((t) => !t.data.tripSlug || t.data.tripSlug === data.slug)
+  .map((t) => t.data);
+
+const sharedFaqsMapped = sharedFaqs
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0))
+  .map((f) => ({
+    id:       f.data.id,
+    question: f.data.question,
+    answer:   f.data.answer,
+    category: f.data.category,
+  }));
+
+const dateRange = formatDateRange(data.dateStart, data.dateEnd);
+---
+
+<TripLayout
+  slug={data.slug}
+  title={data.seo.title}
+  description={data.seo.description}
+  destination={data.destination}
+  dateStart={data.dateStart}
+  dateEnd={data.dateEnd}
+  price={data.pricing.earlyBird}
+  status={data.status}
+  faqs={data.faqs ?? []}
+>
+  <a href="#main" class="skip-link">Langsung ke konten</a>
+
+  <Nav />
+
+  <main id="main">
+    <TripHero
+      destination={data.destination}
+      titleHighlight={data.hero.titleHighlight}
+      subtitle={data.hero.subtitle}
+      lead={data.hero.lead}
+      flag={data.flag}
+      duration={data.duration}
+      dateStart={data.dateStart}
+      dateEnd={data.dateEnd}
+      category={data.category}
+      earlyBirdPrice={data.pricing.earlyBird}
+      normalPrice={data.pricing.normal}
+      status={data.status}
+      slug={data.slug}
+    />
+
+    <ProblemHook
+      destination={data.destination}
+      dateRange={dateRange}
+    />
+
+    <WhatIsJagatrip
+      destination={data.destination}
+    />
+
+    <WhyJoin
+      destination={data.destination}
+    />
+
+    <BenefitsGrid
+      benefits={data.benefits}
+    />
+
+    <Itinerary
+      itinerary={data.itinerary}
+      destination={data.destination}
+    />
+
+    <PackageInclusion
+      inclusions={data.inclusions}
+    />
+
+    <Pricing
+      earlyBird={data.pricing.earlyBird}
+      normal={data.pricing.normal}
+      dpPercentage={data.pricing.dpPercentage}
+      earlyBirdDeadline={data.earlyBirdDeadline}
+      status={data.status}
+      destination={data.destination}
+      slug={data.slug}
+    />
+
+    <Testimonials
+      testimonials={testimonials}
+    />
+
+    <TripFaq
+      faqs={data.faqs ?? []}
+      sharedFaqs={sharedFaqsMapped}
+    />
+
+    <TripCta
+      destination={data.destination}
+      dateRange={dateRange}
+      slug={data.slug}
+    />
+  </main>
+
+  <Footer />
+  <FloatingWA />
+</TripLayout>

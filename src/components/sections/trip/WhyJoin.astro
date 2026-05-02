@@ -1,0 +1,153 @@
+---
+interface Props {
+  destination: string;
+}
+
+const { destination } = Astro.props;
+
+const reasons = [
+  {
+    num: '01',
+    icon: '🏫',
+    title: 'Akses Eksklusif ke Sekolah Kelas Dunia',
+    desc: `Masuk ke sekolah-sekolah terbaik di ${destination} yang tidak bisa diakses sembarang orang. Lihat langsung bagaimana mereka bekerja, bukan hanya dari buku atau YouTube.`,
+  },
+  {
+    num: '02',
+    icon: '🎙️',
+    title: 'Dialog Langsung dengan Praktisi Terbaik',
+    desc: `Ngobrol terbuka dengan kepala sekolah, guru, dan pemimpin pendidikan di ${destination}. Tanya apa saja — dari manajemen kelas hingga strategi pengembangan kurikulum.`,
+  },
+  {
+    num: '03',
+    icon: '💡',
+    title: 'Insight yang Langsung Bisa Diterapkan',
+    desc: 'Setiap workshop dan kunjungan dirancang agar kamu pulang dengan rencana aksi konkret. Bukan inspirasi yang menguap — tapi perubahan nyata untuk sekolahmu.',
+  },
+  {
+    num: '04',
+    icon: '🤝',
+    title: 'Networking dengan Sesama Praktisi Terbaik',
+    desc: 'Bergabung dengan komunitas kepala sekolah, guru, dan pemimpin pendidikan terbaik Indonesia. Kolaborasi yang lahir di sini bisa berdampak bagi ribuan siswa.',
+  },
+  {
+    num: '05',
+    icon: '📸',
+    title: 'Pengalaman yang Tak Terlupakan + Dokumentasi Profesional',
+    desc: `Setiap momen di ${destination} diabadikan secara profesional. Konten yang bisa menginspirasi orang lain dan membuktikan komitmenmu terhadap pendidikan berkualitas.`,
+  },
+];
+---
+
+<section
+  class="section"
+  style="background: var(--color-white);"
+  aria-labelledby="why-join-heading"
+>
+  <div class="container">
+    <div class="why-header">
+      <p class="eyebrow">MENGAPA JAGATRIP TO {destination.toUpperCase()}</p>
+      <h2 id="why-join-heading" class="section-title">
+        5 Alasan Harus Ikut <span class="italic">JAGATRIP to {destination}</span>
+      </h2>
+    </div>
+
+    <ol class="reasons-list" aria-label={`5 alasan mengikuti JAGATRIP to ${destination}`}>
+      {reasons.map((reason, i) => (
+        <li class={`reason-card solution-card${i >= 3 ? ' reason-card-bottom' : ''}`}>
+          <div class="reason-top">
+            <span class="reason-num" aria-hidden="true">{reason.num}</span>
+            <span class="reason-icon" aria-hidden="true">{reason.icon}</span>
+          </div>
+          <h3 class="reason-title">{reason.title}</h3>
+          <p class="reason-desc">{reason.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .why-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .reasons-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    /* 6-column grid: first 3 items span 2 cols each, last 2 span 3 cols each */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  .reason-card {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Items 4 and 5 each take 3 columns to fill row centered */
+  .reason-card-bottom {
+    grid-column: span 3;
+  }
+
+  .reason-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .reason-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--color-orange-light);
+    line-height: 1;
+  }
+
+  .reason-icon {
+    font-size: 28px;
+    line-height: 1;
+    margin-top: 4px;
+  }
+
+  .reason-title {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-ink);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .reason-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--color-grey);
+    margin: 0;
+    flex: 1;
+  }
+
+  @media (max-width: 968px) {
+    .reasons-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reason-card,
+    .reason-card-bottom {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .reasons-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

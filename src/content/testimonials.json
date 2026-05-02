@@ -1,0 +1,29 @@
+[
+  {
+    "id": "t-1",
+    "name": "Bapak H. Hidayat, M.Pd",
+    "role": "Kepala Sekolah · SMA Ramah Indonesia",
+    "quote": "Sebagai kepala sekolah, saya butuh partner yang serius dalam pendidikan, bukan sekadar travel. JAGATRIP adalah jawabannya. Workshop dan dialog dengan praktisi internasional benar-benar mengubah cara pandang tim kami.",
+    "avatar": "BH",
+    "avatarGradient": "--color-grad-avatar-1",
+    "rating": 5
+  },
+  {
+    "id": "t-2",
+    "name": "Ibu Sari Rahmawati",
+    "role": "Pendiri Yayasan · Yayasan AIS Jakarta",
+    "quote": "Investasi terbaik yang pernah kami buat untuk pengembangan tim. Pulang dari Malaysia-Thailand, guru-guru kami punya energi dan ide baru yang langsung bisa diterapkan. Anak-anak yang merasakan dampaknya.",
+    "avatar": "SR",
+    "avatarGradient": "--color-grad-avatar-3",
+    "rating": 5
+  },
+  {
+    "id": "t-3",
+    "name": "Bapak Ahmad Fauzi",
+    "role": "Pengawas Pendidikan · Dinas Pendidikan",
+    "quote": "Bukan studi banding biasa. JAGATRIP membuka akses ke sekolah-sekolah yang biasanya tertutup untuk umum. Networking yang dibangun di sini bahkan masih berjalan setahun setelahnya.",
+    "avatar": "AF",
+    "avatarGradient": "--color-grad-avatar-2",
+    "rating": 5
+  }
+]

@@ -1,0 +1,6 @@
+[
+  { "id": "s-1", "num": "7+",   "label": "Destinasi 2026",        "target": 7,   "suffix": "+" },
+  { "id": "s-2", "num": "100+", "label": "Sekolah Partner",        "target": 100, "suffix": "+" },
+  { "id": "s-3", "num": "500+", "label": "Alumni Praktisi",        "target": 500, "suffix": "+" },
+  { "id": "s-4", "num": "100%", "label": "Safety Record",          "target": 100, "suffix": "%" }
+]

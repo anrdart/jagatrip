@@ -1,0 +1,115 @@
+---
+import Logo from '../brand/Logo.astro';
+import { SITE, waLink } from '../../data/site';
+
+const trips = [
+  { label: 'Malaysia & Thailand — Juni',  href: '/trips/malaysia-thailand' },
+  { label: 'Jogja — Juli',               href: '/trips/jogja' },
+  { label: 'Jepang — Agustus',           href: '/trips/jepang' },
+  { label: 'Bogor — September',          href: '/trips/bogor' },
+  { label: 'China — Oktober',            href: '/trips/china' },
+  { label: 'Malang — November',          href: '/trips/malang' },
+  { label: 'Triple-Country ASEAN — Des', href: '/trips/triple-country-asean' },
+];
+---
+<footer class="bg-ink-deeper" style="color:rgba(255,255,255,0.75);" role="contentinfo">
+  <div class="container" style="padding-top:64px; padding-bottom:64px;">
+    <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px;">
+
+      <!-- Brand -->
+      <div>
+        <Logo variant="horizontal" height={40} class="mb-6" />
+        <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.6); max-width:320px; margin-top:16px;">
+          Program Edu-Tourism premium dan benchmarking sekolah internasional
+          untuk praktisi pendidikan Indonesia.
+        </p>
+        <p style="font-size:12px; font-family:var(--font-mono); letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:16px;">
+          Bermitra dengan {SITE.operator}
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:24px;">
+          <a
+            href={waLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--color-wa-green); text-decoration:none;"
+          >
+            <span aria-hidden="true">💬</span> {SITE.waDisplay}
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            style="display:flex; align-items:center; gap:10px; font-size:14px; color:rgba(255,255,255,0.6); text-decoration:none;"
+          >
+            <span aria-hidden="true">✉️</span> {SITE.email}
+          </a>
+          <span style="display:flex; align-items:center; gap:10px; font-size:14px; color:rgba(255,255,255,0.6);">
+            <span aria-hidden="true">📍</span> {SITE.location}
+          </span>
+        </div>
+      </div>
+
+      <!-- Agenda -->
+      <div>
+        <h3 style="font-family:var(--font-mono); font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--color-orange); margin-bottom:20px;">
+          Agenda 2026
+        </h3>
+        <ul class="list-none" style="display:flex; flex-direction:column; gap:10px;">
+          {trips.map((t) => (
+            <li>
+              <a
+                href={t.href}
+                style="font-size:13px; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s; line-height:1.4;"
+                onmouseover="this.style.color='var(--color-orange)'"
+                onmouseout="this.style.color='rgba(255,255,255,0.6)'"
+              >
+                {t.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h3 style="font-family:var(--font-mono); font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--color-orange); margin-bottom:20px;">
+          Informasi
+        </h3>
+        <ul class="list-none" style="display:flex; flex-direction:column; gap:10px;">
+          {[
+            { label: 'Tentang JAGATRIP', href: '/tentang' },
+            { label: 'FAQ',              href: '/faq' },
+            { label: 'Kontak',           href: '/kontak' },
+          ].map((l) => (
+            <li>
+              <a
+                href={l.href}
+                style="font-size:14px; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s;"
+                onmouseover="this.style.color='var(--color-orange)'"
+                onmouseout="this.style.color='rgba(255,255,255,0.6)'"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:48px; padding-top:32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <p style="font-size:13px; color:rgba(255,255,255,0.4);">
+        &copy; {new Date().getFullYear()} {SITE.legalName}. Hak cipta dilindungi.
+      </p>
+      <p style="font-size:11px; font-family:var(--font-mono); letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3);">
+        {SITE.tagline}
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @media (max-width: 768px) {
+    footer > .container > div:first-child {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

@@ -1,0 +1,256 @@
+---
+import HeroBadge from '../../ui/HeroBadge.astro';
+import Button from '../../ui/Button.astro';
+import { waLink } from '../../../data/site';
+---
+
+<section
+  class="glow-orange-topright"
+  style="
+    background: var(--color-paper);
+    position: relative;
+    overflow: hidden;
+    padding-block: 80px 100px;
+  "
+  aria-label="Hero — JAGATRIP Insider Series 2026"
+>
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Left: Text -->
+      <div class="hero-text">
+        <HeroBadge text="JAGATRIP INSIDER SERIES 2026" />
+
+        <h1 class="hero-h1" style="margin-bottom: 24px;">
+          Buka Jendela <span class="highlight">Dunia</span><br />
+          untuk Generasi Indonesia.
+        </h1>
+
+        <p style="
+          font-family: var(--font-body);
+          font-size: clamp(16px, 2vw, 18px);
+          line-height: 1.7;
+          color: var(--color-grey);
+          max-width: 520px;
+          margin-bottom: 36px;
+        ">
+          Program Edu-Tourism premium untuk praktisi pendidikan yang ingin benchmarking
+          langsung ke sekolah-sekolah terbaik dunia. Bukan studi banding biasa.
+        </p>
+
+        <!-- CTAs -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px;">
+          <Button href="#agenda" variant="primary" size="lg">
+            Lihat Agenda 2026 →
+          </Button>
+          <Button
+            href={waLink()}
+            variant="wa"
+            size="lg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Konsultasi WhatsApp
+          </Button>
+        </div>
+
+        <!-- Trust items -->
+        <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+          <span class="trust-item">✅ Tour Leader Bersertifikat</span>
+          <span class="trust-item">✅ Asuransi Lengkap</span>
+          <span class="trust-item">✅ Workshop Eksklusif</span>
+        </div>
+      </div>
+
+      <!-- Right: Card stack -->
+      <div class="hero-cards-wrapper" style="position: relative; height: 480px;">
+
+        <!-- Decorative emoji -->
+        <span
+          aria-hidden="true"
+          style="
+            position: absolute;
+            bottom: 0;
+            right: -20px;
+            font-size: 100px;
+            opacity: 0.12;
+            line-height: 1;
+            pointer-events: none;
+            z-index: 0;
+          "
+        >✈️</span>
+
+        <!-- Card 1: Trip info (orange gradient, bottom) -->
+        <div
+          class="card"
+          style="
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 60px;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8B5A 100%);
+            border: none;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            z-index: 1;
+          "
+        >
+          <p style="
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 8px;
+          ">TRIP TERDEKAT</p>
+
+          <p style="
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+          ">MALAYSIA &amp; THAILAND</p>
+
+          <p style="
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 12px;
+          ">24-28 Juni 2026 &nbsp;·&nbsp; 5 Hari · 2 Negara</p>
+
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-size: 28px;" aria-label="Malaysia Thailand">🇲🇾🇹🇭</span>
+            <div style="text-align: right;">
+              <p style="
+                font-family: var(--font-mono);
+                font-size: 10px;
+                letter-spacing: 2px;
+                color: rgba(255,255,255,0.7);
+                text-transform: uppercase;
+              ">MULAI DARI</p>
+              <p style="
+                font-family: var(--font-display);
+                font-size: 24px;
+                font-weight: 900;
+                font-style: italic;
+                color: white;
+              ">Rp 7.9 juta</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Social proof (white, middle) -->
+        <div
+          class="card"
+          style="
+            position: absolute;
+            top: 220px;
+            right: 0;
+            left: 40px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+          "
+        >
+          <div class="avatar-stack" aria-label="Peserta yang sudah mendaftar">
+            <div class="avatar" style="background: var(--color-grad-avatar-1);" aria-label="BH">BH</div>
+            <div class="avatar" style="background: var(--color-grad-avatar-3);" aria-label="SR">SR</div>
+            <div class="avatar" style="background: var(--color-grad-avatar-2);" aria-label="AF">AF</div>
+            <div class="avatar" style="background: var(--color-grad-avatar-4);" aria-label="RK">RK</div>
+          </div>
+          <div>
+            <p style="
+              font-family: var(--font-body);
+              font-size: 15px;
+              font-weight: 700;
+              color: var(--color-ink);
+              margin-bottom: 2px;
+            ">47+ praktisi daftar</p>
+            <p style="
+              font-family: var(--font-body);
+              font-size: 12px;
+              color: var(--color-grey);
+            ">Kursi terbatas — segera amankan!</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Testimonial (dark, top right) -->
+        <div
+          class="card"
+          style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 220px;
+            background: var(--color-ink);
+            border: none;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            z-index: 3;
+          "
+        >
+          <p style="
+            font-family: var(--font-body);
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+          ">★★★★★</p>
+          <p style="
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.5;
+            margin-bottom: 12px;
+          ">"Workshop dan dialog dengan praktisi internasional benar-benar mengubah cara pandang tim kami."</p>
+          <p style="
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-orange);
+          ">Bapak Hidayat, Kepala Sekolah</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  @media (max-width: 968px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .hero-cards-wrapper {
+      height: 380px !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-cards-wrapper {
+      height: 340px !important;
+    }
+  }
+</style>

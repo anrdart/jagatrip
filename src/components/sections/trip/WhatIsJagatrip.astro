@@ -1,0 +1,154 @@
+---
+interface Props {
+  destination: string;
+}
+
+const { destination } = Astro.props;
+
+const pillars = [
+  {
+    icon: '📍',
+    title: 'Field Learning',
+    desc: 'Kunjungan langsung ke sekolah-sekolah terbaik dan lembaga pendidikan unggulan di ' + destination + '. Bukan ceramah — pengalaman nyata.',
+  },
+  {
+    icon: '🎤',
+    title: 'Workshop Eksklusif',
+    desc: 'Sesi intensif bersama praktisi dan pemimpin pendidikan. Diskusi, brainstorming, dan penyusunan rencana aksi untuk sekolahmu.',
+  },
+  {
+    icon: '🌐',
+    title: 'Networking Premium',
+    desc: 'Bergabung dengan komunitas praktisi pendidikan terbaik Indonesia. Koneksi yang dibangun di sini bertahan jauh setelah perjalanan usai.',
+  },
+];
+---
+
+<section
+  class="section"
+  style="background: var(--color-paper);"
+  aria-labelledby="what-is-jagatrip-heading"
+>
+  <div class="container">
+    <div class="what-header">
+      <p class="eyebrow">TENTANG PROGRAM</p>
+      <h2 id="what-is-jagatrip-heading" class="section-title">
+        Apa Itu <span class="italic">JAGATRIP?</span>
+      </h2>
+    </div>
+
+    <div class="what-content">
+      <div class="what-text">
+        <p id="jagatrip-trip-definition" class="definition-para">
+          JAGATRIP adalah program edu-tourism premium yang dirancang khusus untuk praktisi pendidikan Indonesia.
+          Melalui perjalanan ke {destination}, kamu tidak sekadar berwisata — kamu mendapatkan akses eksklusif ke
+          sistem pendidikan kelas dunia, berdialog langsung dengan para pemimpin sekolah terbaik, dan membawa pulang
+          praktik nyata yang bisa langsung diterapkan untuk memajukan sekolah dan generasi didikmu.
+        </p>
+
+        <blockquote class="pull-quote">
+          "Bukan sekadar jalan-jalan. Bukan sekadar studi banding biasa. JAGATRIP adalah perjalanan edukasi
+          penuh makna yang mengubah cara pandangmu tentang pendidikan."
+        </blockquote>
+      </div>
+
+      <div class="pillars-grid" role="list" aria-label="Tiga pilar program JAGATRIP">
+        {pillars.map((pillar) => (
+          <div class="pillar-card" role="listitem">
+            <div class="pillar-icon" aria-hidden="true">{pillar.icon}</div>
+            <h3 class="pillar-title">{pillar.title}</h3>
+            <p class="pillar-desc">{pillar.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .what-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .what-content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .what-text {
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .definition-para {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--color-grey);
+  }
+
+  .pull-quote {
+    text-align: left;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .pillar-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card-md);
+    padding: 32px 28px;
+    border: 1px solid var(--color-grey-light);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-solution-hover);
+  }
+
+  .pillar-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+
+  .pillar-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-bottom: 12px;
+  }
+
+  .pillar-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--color-grey);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .what-text {
+      text-align: left;
+    }
+
+    .pull-quote {
+      margin-inline: 0;
+    }
+  }
+</style>

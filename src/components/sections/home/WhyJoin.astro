@@ -1,0 +1,104 @@
+---
+const reasons = [
+  {
+    icon: '🎓',
+    title: 'Sistem Pendidikan Kelas Dunia',
+    desc: 'Belajar langsung dari sekolah-sekolah yang terbukti menghasilkan lulusan berkualitas internasional.',
+  },
+  {
+    icon: '💡',
+    title: 'Guru yang Benar-benar Menginspirasi',
+    desc: 'Berinteraksi langsung dengan para pendidik berprestasi yang mengubah cara pandang kita tentang mengajar.',
+  },
+  {
+    icon: '📱',
+    title: 'Teknologi Pendidikan yang Relevan',
+    desc: 'Saksikan langsung bagaimana teknologi diintegrasikan ke ruang kelas dengan efektif dan bermakna.',
+  },
+  {
+    icon: '🤝',
+    title: 'Jaringan yang Tidak Ternilai',
+    desc: 'Bergabung dengan komunitas praktisi pendidikan terbaik Indonesia. Koneksi yang dibangun di sini bertahan seumur karier.',
+  },
+  {
+    icon: '🏆',
+    title: 'Rekognisi & Sertifikasi Resmi',
+    desc: 'Dapatkan sertifikat resmi dari PT JAGATRIP MITRA EDUKASI sebagai bukti partisipasi program bertaraf internasional.',
+  },
+];
+---
+
+<section
+  class="section"
+  style="background: var(--color-white);"
+  aria-labelledby="why-join-title"
+>
+  <div class="container">
+    <!-- Header -->
+    <div style="text-align: center; max-width: 720px; margin-inline: auto; margin-bottom: 64px;">
+      <span class="eyebrow">MENGAPA JAGATRIP</span>
+      <h2 id="why-join-title" class="section-title">
+        5 Alasan <span class="italic">Memilih JAGATRIP</span> untuk Sekolahmu
+      </h2>
+    </div>
+
+    <!-- Cards -->
+    <div class="reasons-grid">
+      {reasons.map((reason, index) => (
+        <div
+          class={`solution-card reveal ${index === 4 ? 'center-card' : ''}`}
+        >
+          <p style="font-size: 40px; margin-bottom: 16px;" aria-hidden="true">{reason.icon}</p>
+          <h3 style="
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-ink);
+            margin-bottom: 12px;
+          ">
+            {reason.title}
+          </h3>
+          <p style="
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-grey);
+          ">
+            {reason.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .center-card {
+    grid-column: 1 / -1;
+    max-width: 540px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .reasons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .reasons-grid {
+      grid-template-columns: 1fr;
+    }
+    .center-card {
+      grid-column: auto;
+      max-width: none;
+    }
+  }
+</style>

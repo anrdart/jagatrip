@@ -1,0 +1,97 @@
+---
+import Button from '../../ui/Button.astro';
+import { waLink } from '../../../data/site';
+---
+
+<section
+  class="section glow-orange-center"
+  style="
+    background: var(--color-ink);
+    position: relative;
+    overflow: hidden;
+  "
+  aria-labelledby="cta-title"
+>
+  <div class="container" style="text-align: center; position: relative; z-index: 1;">
+    <!-- Eyebrow -->
+    <span class="eyebrow" style="color: var(--color-orange);">MULAI SEKARANG</span>
+
+    <!-- Heading -->
+    <h2
+      id="cta-title"
+      class="section-title"
+      style="
+        color: white;
+        font-weight: 900;
+        margin-bottom: 20px;
+        max-width: 680px;
+        margin-inline: auto;
+      "
+    >
+      Sekolahmu Layak Dapat <span class="italic" style="color: var(--color-orange);">yang Terbaik.</span>
+    </h2>
+
+    <!-- Lead -->
+    <p style="
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+      max-width: 560px;
+      margin-inline: auto;
+      margin-bottom: 40px;
+    ">
+      Ribuan sekolah masih menunggu. Tapi kursi JAGATRIP Insider Series 2026 tidak.
+    </p>
+
+    <!-- CTAs -->
+    <div style="
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 28px;
+    ">
+      <Button
+        href={waLink()}
+        variant="wa"
+        size="lg"
+        target="_blank"
+        rel="noopener noreferrer"
+        ariaLabel="Daftar via WhatsApp sekarang"
+      >
+        Daftar via WhatsApp 💬
+      </Button>
+
+      <Button
+        href="/#agenda"
+        variant="secondary"
+        size="lg"
+        ariaLabel="Lihat seluruh agenda 2026"
+      >
+        <span style="color: white;">Lihat Agenda 2026</span>
+      </Button>
+    </div>
+
+    <!-- Urgency -->
+    <p style="
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-orange);
+    ">
+      ⚡ Kuota TERBATAS · Early Bird Malaysia-Thailand s/d 10 Juni 2026
+    </p>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    .section > .container > div[style*="flex"] {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
