@@ -12,7 +12,7 @@ export const SITE = {
   operator:    'Alfatihah Tour & Travel',
   locale:      'id-ID',
   lang:        'id',
-  location:    'Jakarta, Indonesia',
+  location:    'Semarang, Indonesia',
   foundingYear: 2026,
 } as const;
 
