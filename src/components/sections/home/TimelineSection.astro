@@ -27,7 +27,7 @@ function formatDayDate(d: Date): string {
 }
 ---
 
-<section class="py-24 bg-white">
+<section id="itinerary" class="py-24 bg-white">
   <div class="max-w-5xl mx-auto px-6">
     <div class="text-center mb-20">
       <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">5 Hari yang Bisa Mengubah <span class="text-jaga-orange">5 Tahun ke Depan</span> Sekolahmu.</h2>
@@ -37,8 +37,8 @@ function formatDayDate(d: Date): string {
     <div class="relative border-l-4 border-jaga-orange/30 ml-4 md:ml-10 space-y-16">
       {itinerary.map((day) => (
         <div class="relative pl-10 md:pl-16">
-          <div class="absolute -left-[18px] md:-left-[22px] top-0 w-8 h-8 md:w-10 md:h-10 bg-jaga-orange rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm md:text-base">{day.day}</div>
-          <div class="bg-jaga-bg p-8 md:p-10 rounded-[2rem] shadow-sm border border-gray-100">
+          <div class="absolute -left-4.5 md:-left-5.5 top-0 w-8 h-8 md:w-10 md:h-10 bg-jaga-orange rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm md:text-base">{day.day}</div>
+          <div class="bg-jaga-bg p-8 md:p-10 rounded-4xl shadow-sm border border-gray-100">
             <h3 class="text-xl md:text-2xl font-bold text-jaga-orange mb-2">HARI {day.day} — {day.dayName}, {formatDayDate(day.date)}</h3>
             <h4 class="text-2xl md:text-3xl font-black text-gray-900 mb-6 uppercase tracking-wide">{day.theme}</h4>
             <ul class="space-y-3">

@@ -1,0 +1,50 @@
+---
+const includes = [
+  { icon: '✈️', label: 'TIKET PESAWAT', desc: 'Round-trip flight ke KLIA (PP)' },
+  { icon: '🏨', label: 'HOTEL BINTANG 3', desc: 'Penginapan nyaman selama 4 malam' },
+  { icon: '🍽️', label: '10x MAKAN', desc: 'Termasuk sarapan, makan siang, dan makan malam pilihan' },
+  { icon: '🥂', label: 'WELCOME DRINK', desc: 'Minuman sambutan di hari pertama' },
+  { icon: '🚌', label: 'BUS PARIWISATA LUXURY', desc: 'Transportasi darat Malaysia–Thailand (VIP)' },
+  { icon: '📚', label: 'WORKSHOP & SEMINAR KIT', desc: 'Modul, buku, dan alat tulis eksklusif' },
+  { icon: '🛍️', label: 'MERCHANDISE JAGATRIP', desc: 'Tas, kaos, dan souvenir eksklusif Insider Series' },
+  { icon: '🎁', label: 'DOOR PRIZE', desc: 'Hadiah menarik untuk peserta beruntung' },
+  { icon: '🥇', label: 'SERTIFIKAT RESMI', desc: 'Sertifikat benchmarking internasional dari PT Jagatrip Mitra Edukasi' },
+  { icon: '📸', label: 'DOKUMENTASI', desc: 'Foto dan video profesional selama perjalanan' },
+  { icon: '🗺️', label: 'CITY TOUR', desc: 'Tur kota Kuala Lumpur & Bangkok' },
+  { icon: '👨‍🏫', label: 'TOUR LEADER PROFESIONAL', desc: 'Pendamping berpengalaman selama perjalanan' },
+  { icon: '🛡️', label: 'ASURANSI PERJALANAN', desc: 'Perlindungan selama program berlangsung' },
+];
+---
+
+<section class="py-24 bg-white border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">
+        Semua Sudah Termasuk.
+      </h2>
+      <p class="text-2xl md:text-3xl font-bold text-jaga-orange">
+        Kamu Tinggal Hadir dan Belajar.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4 mb-10">
+      {includes.map((item, i) => (
+        <div class={`flex items-start bg-jaga-bg p-5 rounded-xl border border-gray-100${i === includes.length - 1 ? ' sm:col-span-2 sm:max-w-sm sm:mx-auto' : ''}`}>
+          <span class="text-2xl mr-4 shrink-0">{item.icon}</span>
+          <div>
+            <p class="text-gray-900 font-bold leading-tight">{item.label}</p>
+            <p class="text-gray-500 text-sm mt-0.5">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6">
+      <p class="text-gray-800 text-base leading-relaxed text-center">
+        <span class="font-bold text-jaga-orange uppercase mr-2">CATATAN PENTING:</span>
+        Meeting Point Keberangkatan: KLIA (Kuala Lumpur International Airport).
+        Tiket pesawat dari kota asal peserta menuju KLIA ditanggung dalam paket.
+      </p>
+    </div>
+  </div>
+</section>
