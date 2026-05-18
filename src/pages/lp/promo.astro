@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Nav from '../../components/layout/Nav.astro';
 import Footer from '../../components/layout/Footer.astro';
 import FloatingWA from '../../components/layout/FloatingWA.astro';
 import { SITE } from '../../data/site';
@@ -14,8 +13,6 @@ const waAsk = `https://wa.me/${SITE.waNumber}?text=${encodeURIComponent('Halo ad
   title="EDUTRIP MALAYSIA-THAILAND 2026 — Rp 6.500.000 (Slot Terbatas)"
   description="Promo Rp6.500.000 untuk 10 pendaftar pertama. 5 Hari ke Malaysia & Thailand. Daftar via WhatsApp sekarang."
 >
-  <Nav />
-
   <main id="main" class="lp2">
 
     <!-- HERO -->
@@ -140,7 +137,7 @@ const waAsk = `https://wa.me/${SITE.waNumber}?text=${encodeURIComponent('Halo ad
 <style>
   .lp2 { --lp-primary:#E8611F; --lp-navy:#0A1F44; --lp-cream:#FFF8F0; --lp-yellow:#FFD23F; --lp-gray:#6B7280; --lp-green:#10B981; --lp-red:#DC2626; }
 
-  .lp2-hero { background:linear-gradient(135deg,#FFF8F0,#FFE4CC); padding:120px 20px 60px; text-align:center; }
+  .lp2-hero { background:linear-gradient(135deg,#FFF8F0,#FFE4CC); padding:48px 20px 60px; text-align:center; }
   .lp2-hero-inner { max-width:900px; margin:0 auto; }
   .lp2-pill { display:inline-flex; align-items:center; gap:8px; background:var(--lp-navy); color:var(--lp-yellow); padding:8px 18px; border-radius:999px; font-size:13px; font-weight:800; margin-bottom:20px; }
   .lp2-pulse { width:8px; height:8px; background:var(--lp-yellow); border-radius:50%; animation:lp2pulse 1.5s infinite; }

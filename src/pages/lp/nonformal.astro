@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Nav from '../../components/layout/Nav.astro';
 import Footer from '../../components/layout/Footer.astro';
 import FloatingWA from '../../components/layout/FloatingWA.astro';
 import { SITE } from '../../data/site';
@@ -12,8 +11,6 @@ const wa = `https://wa.me/${SITE.waNumber}?text=${encodeURIComponent('Halo JAGAT
   title="JAGATRIP - Ngetrip Edukatif ke Malaysia-Thailand, Juni 2026"
   description="Edutrip Malaysia-Thailand 24-28 Juni 2026. Travel to Learn, Learn to Lead. Daftar sekarang sebelum kuota habis!"
 >
-  <Nav />
-
   <main id="main" class="lp-nf">
 
     <!-- HERO -->
@@ -195,7 +192,7 @@ const wa = `https://wa.me/${SITE.waNumber}?text=${encodeURIComponent('Halo JAGAT
 <style>
   .lp-nf { --lp-primary: #E8611F; --lp-navy: #0A1F44; --lp-cream: #FFF8F0; --lp-yellow: #FFD23F; --lp-gray: #6B7280; }
 
-  .lp-hero { padding:120px 24px 80px; background:linear-gradient(135deg,var(--lp-cream),#FFE8D6); }
+  .lp-hero { padding:48px 24px 80px; background:linear-gradient(135deg,var(--lp-cream),#FFE8D6); }
   .lp-hero-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center; }
   .lp-tag { display:inline-block; background:var(--lp-navy); color:var(--lp-yellow); padding:6px 16px; border-radius:999px; font-size:13px; font-weight:700; margin-bottom:20px; }
   .lp-hero h1 { font-size:clamp(32px,5vw,52px); font-weight:900; line-height:1.08; color:var(--lp-navy); letter-spacing:-1.5px; margin-bottom:20px; }
